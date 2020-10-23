@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"jokes"
 	"strings"
 )
 
@@ -25,6 +26,11 @@ func changeString(s *string) {
 	*s = strings.ToUpper(*s)
 }
 
+func changeString2(s string) string {
+	s2 := strings.ToUpper(s)
+	return s2
+}
+
 func printData(dta []string, title string) {
 	fmt.Println(title)
 	for _, itm := range dta {
@@ -46,4 +52,10 @@ func main() {
 	s := "brody"
 	changeString(&s)
 	fmt.Printf("Value of Brody\n%s\n", s)
+
+	s2 := "samantha"
+	s3 := changeString2(s2)
+	fmt.Printf("Value of %s is now %s\n", s2, s3)
+
+	jokeOne := jokes.GetJokeOne()
 }
