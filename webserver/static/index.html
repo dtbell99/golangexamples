@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Golang Webserver Example</title>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+
+<body>
+    <h1><img style="vertical-align:middle" src="Go-Logo_Blue.png" height="96px" />Webserver Example</h1>
+    
+    <hr/>
+    <div class="health">
+        <h2>System Health</h2>
+        <button onclick="health()">Get Health</button>
+        <div id="healthdata"></div>
+    </div>
+    <br/><br/>
+    <div class="log">
+        <h2>Logs</h2>
+        <textarea rows="4" cols="50" placeholder="Add Message" id="logEntry"></textarea>
+        <br/>
+        <button  onclick="addLog()" class="button">Add Log</button>
+        <hr/>
+        <table class="datatable" id="logtable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Message</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody id="log_tbody">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+h1 {
+    color: #01AED9;
+    font-family: arial;
+    vertical-align: middle;
+}
+button {
+    font-family: arial;
+    height:40px;
+    width:100px;
+}
+.health {
+    border:.2em solid #01AED9;
+    border-radius:8px;
+    width:600px;
+    padding:20px;
+}
+#healthdata {
+    padding:20px;
+}
+.log {
+    border:.2em solid #01AED9;
+    border-radius:8px;
+    width:600px;
+    padding:20px;
+}
+.datatable td { border: .2em solid #cccccc}
+.datatable table { border: .2em solid #cccccc}
