@@ -47,7 +47,6 @@ func logHandler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(body)
 		return
-
 	default:
 		err := errors.New("Invalid Method")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
