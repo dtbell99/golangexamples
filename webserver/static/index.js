@@ -10,6 +10,18 @@ const health = async () => {
     document.getElementById('healthdata').innerHTML = JSON.stringify(result);
 }
 
+const deleteLogEntry = async (id) => {
+    console.log(`Delete id:${id}`);
+    try {
+        const resp = await fetch(`/log/${id}`, {method: 'DELETE'});
+        if (resp.ok) {
+            getLogs();
+        }
+    } catch(err) {
+        alert(err);
+    }
+}
+
 const updateLogTable = (logEntries) => {
     const logTable = document.getElementById('log_tbody');
     logTable.innerHTML = "";
@@ -20,9 +32,14 @@ const updateLogTable = (logEntries) => {
         let idCell = row.insertCell(0);
         let messageCell = row.insertCell(1);
         let createdCell = row.insertCell(2);
+        let optionsCell = row.insertCell(3);
         idCell.innerHTML = logEntry.id;
         messageCell.innerHTML = logEntry.message;
         createdCell.innerHTML = logEntry.created;
+         const deleteButton = document.createElement('button');
+         deleteButton.innerHTML = 'X';
+         deleteButton.onclick = function() {deleteLogEntry(logEntry.id);}
+         optionsCell.appendChild(deleteButton);
         cntr++;
     });
 }

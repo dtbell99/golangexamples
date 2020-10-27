@@ -71,3 +71,22 @@ func AddLogMessage(message string) int64 {
 	fmt.Printf("id created: %d", id)
 	return id
 }
+
+// DeleteLogMessage : Method to remove id from log database
+func DeleteLogMessage(id int) {
+	db, err := sql.Open("sqlite3", "./localdatabase.db")
+	checkErr(err)
+
+	defer db.Close()
+
+	stmt, err := db.Prepare("delete from log where id=?")
+	checkErr(err)
+
+	res, err := stmt.Exec(id)
+	checkErr(err)
+
+	affect, err := res.RowsAffected()
+	checkErr(err)
+
+	fmt.Printf("Rows Deleted: %d\n", affect)
+}
