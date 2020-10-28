@@ -2,7 +2,6 @@ package localdatabase
 
 import (
 	"database/sql"
-	"fmt"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3" // Using loader
@@ -68,7 +67,6 @@ func AddLogMessage(message string) int64 {
 	id, err := res.LastInsertId()
 	checkErr(err)
 
-	fmt.Printf("id created: %d", id)
 	return id
 }
 
@@ -85,8 +83,6 @@ func DeleteLogMessage(id int) {
 	res, err := stmt.Exec(id)
 	checkErr(err)
 
-	affect, err := res.RowsAffected()
+	_, err = res.RowsAffected()
 	checkErr(err)
-
-	fmt.Printf("Rows Deleted: %d\n", affect)
 }

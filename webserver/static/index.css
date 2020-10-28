@@ -23,5 +23,15 @@ button {
     width:600px;
     padding:20px;
 }
-.datatable td { border: .2em solid #cccccc}
-.datatable table { border: .2em solid #cccccc}
+.datatable tr { border: .2em solid #01AED9}
+
+table { 
+    border: .2em solid #01AED9;
+    border-radius: 8px;
+    border-collapse: collapse;
+}
+
+td {
+    padding:20px;
+    border:.1em solid black;
+}

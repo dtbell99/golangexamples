@@ -6,11 +6,10 @@ In this example there are many great aspects of a web application and server in 
 ## Health
 This example shows making a fetch request to a GET endpoint in Go to get back JSON about the health of the system.
 
-<img src="health.png" width="600">
-
 ## Log
-In this example we post data to Go and write that data to a file.
+In this example we post data to Go and write that data to a file. 
+1. Post to server and store in sqlite.
+2. Pull all logs from sqlite and return as json.
+3. Create delete method removing log entry from database.
 
-We then pull down all logs written and display them on the screen. 
-
-<img src="log.png" width="600"/>
+<img src="webserver.png" width="600"/>
