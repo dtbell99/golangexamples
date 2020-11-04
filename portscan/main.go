@@ -38,7 +38,6 @@ func writeLog() {
 func rawConnect(host string, ports []string) []string {
 	found := make([]string, 0)
 	for _, port := range ports {
-		//fmt.Printf("%s::%s\n", host, port)
 		conn, err := net.DialTimeout("tcp", net.JoinHostPort(host, port), time.Second)
 		if err == nil && conn != nil {
 			defer conn.Close()
