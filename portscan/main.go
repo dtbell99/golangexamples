@@ -10,7 +10,8 @@ import (
 	"time"
 )
 
-var ports = []string{"20", "21", "22", "23", "25", "80", "110", "119", "123", "143", "161", "194", "443", "5900"}
+//var ports = []string{"20", "21", "22", "23", "25", "53", "80", "110", "119", "123", "143", "161", "194", "443", "5900"}
+var ports = []string{"80"}
 var machines = make([]string, 0)
 
 func writeLog() {
@@ -38,7 +39,8 @@ func writeLog() {
 func rawConnect(host string, ports []string) []string {
 	found := make([]string, 0)
 	for _, port := range ports {
-		conn, err := net.DialTimeout("tcp", net.JoinHostPort(host, port), time.Second)
+		fmt.Printf("%s::%s\n", host, port)
+		conn, err := net.DialTimeout("tcp", net.JoinHostPort(host, port), 3*time.Second)
 		if err == nil && conn != nil {
 			defer conn.Close()
 			hl, _ := net.LookupAddr(host)
@@ -59,7 +61,8 @@ func findByPort(ip string) {
 func main() {
 	var wg sync.WaitGroup
 	for i := 1; i < 255; i++ {
-		ip := fmt.Sprintf("10.0.0.%d", i)
+		classC := "10.243.234"
+		ip := fmt.Sprintf("%s.%d", classC, i)
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
