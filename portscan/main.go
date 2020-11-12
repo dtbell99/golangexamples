@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-//var ports = []string{"20", "21", "22", "23", "25", "53", "80", "110", "119", "123", "143", "161", "194", "443", "5900"}
-var ports = []string{"80"}
+var ports = []string{"20", "21", "22", "23", "25", "53", "80", "110", "119", "123", "143", "161", "194", "443", "5900"}
+
 var machines = make([]string, 0)
 
 func writeLog() {
@@ -61,7 +61,7 @@ func findByPort(ip string) {
 func main() {
 	var wg sync.WaitGroup
 	for i := 1; i < 255; i++ {
-		classC := "10.243.234"
+		classC := "10.0.0"
 		ip := fmt.Sprintf("%s.%d", classC, i)
 		wg.Add(1)
 		go func() {
