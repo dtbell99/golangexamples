@@ -16,14 +16,7 @@ var machines = make([]string, 0)
 
 func writeLog() {
 	now := time.Now()
-	day := now.Day()
-	month := now.Month()
-	year := now.Year()
-	hour := now.Hour()
-	minute := now.Minute()
-	seconds := now.Second()
-
-	fName := fmt.Sprintf("Machines_%d-%d-%d_%d-%d-%d.log", month, day, year, hour, minute, seconds)
+	fName := fmt.Sprintf("Portscan_%d-%d-%d_%d-%d-%d.log", now.Month(), now.Day(), now.Year(), now.Hour(), now.Minute(), now.Second())
 	file, err := os.OpenFile(fName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	defer file.Close()
 	if err != nil {
@@ -39,12 +32,12 @@ func writeLog() {
 func rawConnect(host string, ports []string) []string {
 	found := make([]string, 0)
 	for _, port := range ports {
-		fmt.Printf("%s::%s\n", host, port)
 		conn, err := net.DialTimeout("tcp", net.JoinHostPort(host, port), 3*time.Second)
 		if err == nil && conn != nil {
 			defer conn.Close()
 			hl, _ := net.LookupAddr(host)
 			foundStr := fmt.Sprintf("%s :: %s", net.JoinHostPort(host, port), hl)
+			fmt.Printf("%s\n", foundStr)
 			found = append(found, foundStr)
 		}
 	}
